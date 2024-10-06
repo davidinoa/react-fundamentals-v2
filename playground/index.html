@@ -1,13 +1,20 @@
 <html>
 	<body>
+		<div id="root"></div>
+
 		<script type="module">
-			const rootElement = document.createElement('div', { id: 'root' })
-			const element = document.createElement('div')
-			element.className = 'container'
-			element.textContent = 'Hello World'
-			rootElement.append(element)
-			document.body.append(rootElement)
+			import { createElement } from '/react.js'
+			import { createRoot } from '/react-dom/client.js'
+
+			const rootElement = document.getElementById('root')
+			const element = createElement('div', {
+				className: 'container',
+				children: 'Hello World',
+			})
+			const root = createRoot(rootElement)
+			root.render(element)
 		</script>
+
 		<script type="module" src="epic_ws.js"></script>
 	</body>
 </html>
