@@ -10,7 +10,8 @@
 
 			const children = 'Hello World'
 			const className = 'container'
-			const element = <div className={className}>{children}</div>
+			const props = { children, className }
+			const element = <div {...props} />
 
 			createRoot(rootElement).render(element)
 		</script>
