@@ -8,14 +8,15 @@
 
 			const rootElement = document.getElementById('root')
 
+			function message({ children }) {
+				return <div className="message">{children}</div>
+			}
+
 			const element = (
-				<>
-					<p>Here's Sam's favorite food:</p>
-					<ul className="sams-food">
-						<li>Green eggs</li>
-						<li>Ham</li>
-					</ul>
-				</>
+				<div className="container">
+					{message({ children: 'Hello World' })}
+					{message({ children: 'Goodbye World' })}
+				</div>
 			)
 
 			createRoot(rootElement).render(element)
