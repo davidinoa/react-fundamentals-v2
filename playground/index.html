@@ -8,14 +8,31 @@
 
 			const rootElement = document.getElementById('root')
 
-			function Message({ children }) {
-				return <div className="message">{children}</div>
+			const operations = {
+				'+': (left, right) => left + right,
+				'-': (left, right) => left - right,
+				'*': (left, right) => left * right,
+				'/': (left, right) => left / right,
+			}
+
+			function Calculator({ left, operator, right }) {
+				const result = operations[operator](left, right)
+				return (
+					<div>
+						<code>
+							{left} {operator} {right} = <output>{result}</output>
+						</code>
+					</div>
+				)
 			}
 
 			const element = (
-				<div className="container">
-					<Message>Hello World</Message>
-					<Message>Goodbye World</Message>
+				<div>
+					<h1>Calculator</h1>
+					<Calculator left={1} operator="+" right={2} />
+					<Calculator left={1} operator="-" right={2} />
+					<Calculator left={1} operator="*" right={2} />
+					<Calculator left={1} operator="/" right={2} />
 				</div>
 			)
 
