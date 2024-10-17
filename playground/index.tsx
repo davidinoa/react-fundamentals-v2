@@ -1,15 +1,18 @@
 import { createRoot } from 'react-dom/client'
 
-const operations = {
-	'+': (left: number, right: number): number => left + right,
-	'-': (left: number, right: number): number => left - right,
-	'*': (left: number, right: number): number => left * right,
-	'/': (left: number, right: number): number => left / right,
+type OperationFn = (left: number, right: number) => number
+type Operator = '+' | '-' | '*' | '/'
+
+const operations: Record<Operator, OperationFn> = {
+	'+': (left, right) => left + right,
+	'-': (left, right) => left - right,
+	'*': (left, right) => left * right,
+	'/': (left, right) => left / right,
 }
 
 type CalculatorProps = {
 	left?: number
-	operator?: keyof typeof operations
+	operator?: Operator
 	right?: number
 }
 
