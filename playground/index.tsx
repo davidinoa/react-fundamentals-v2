@@ -7,9 +7,11 @@ const operations = {
 	'/': (left: number, right: number): number => left / right,
 }
 
+type Operation = keyof typeof operations
+
 type CalculatorProps = {
 	left: number
-	operator: keyof typeof operations
+	operator: Operation
 	right: number
 }
 
