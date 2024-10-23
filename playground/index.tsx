@@ -1,38 +1,46 @@
 import { createRoot } from 'react-dom/client'
 
-type OperationFn = (left: number, right: number) => number
+const smallBox = (
+	<div
+		className="box box--small"
+		style={{ backgroundColor: 'lightblue', fontStyle: 'italic' }}
+	>
+		small lightblue box
+	</div>
+)
+const mediumBox = (
+	<div
+		className="box box--medium"
+		style={{ backgroundColor: 'pink', fontStyle: 'italic' }}
+	>
+		medium pink box
+	</div>
+)
+const largeBox = (
+	<div
+		className="box box--large"
+		style={{ backgroundColor: 'orange', fontStyle: 'italic' }}
+	>
+		large orange box
+	</div>
+)
 
-const operations = {
-	'+': (left, right) => left + right,
-	'-': (left, right) => left - right,
-	'*': (left, right) => left * right,
-	'/': (left, right) => left / right,
-} satisfies Record<string, OperationFn>
-
-type CalculatorProps = {
-	left?: number
-	operator?: keyof typeof operations
-	right?: number
-}
-function Calculator({ left = 0, operator = '+', right = 0 }: CalculatorProps) {
-	const result = operations[operator](left, right)
-	return (
-		<div>
-			<code>
-				{left} {operator} {right} = <output>{result}</output>
-			</code>
-		</div>
-	)
-}
+const sizelessColorlessBox = (
+	<div
+		className="box"
+		style={{ backgroundColor: 'transparent', fontStyle: 'italic' }}
+	>
+		sizeless colorless box
+	</div>
+)
 
 function App() {
 	return (
 		<div>
-			<h1>Calculator</h1>
-			<Calculator left={1} right={2} />
-			<Calculator operator="-" />
-			<Calculator left={1} operator="*" />
-			<Calculator operator="/" right={2} />
+			{smallBox}
+			{mediumBox}
+			{largeBox}
+			{sizelessColorlessBox}
 		</div>
 	)
 }
