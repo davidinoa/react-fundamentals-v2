@@ -1,17 +1,12 @@
 import { createRoot } from 'react-dom/client'
 
 function App() {
+	const logFormData = (formData: FormData) => {
+		console.log(Object.fromEntries(formData))
+	}
+
 	return (
-		<form
-			action="api/onboarding"
-			method="POST"
-			encType="multipart/form-data"
-			onSubmit={event => {
-				event.preventDefault()
-				const formData = new FormData(event.currentTarget)
-				console.log(Object.fromEntries(formData))
-			}}
-		>
+		<form action={logFormData}>
 			<div>
 				<label htmlFor="usernameInput">Username:</label>
 				<input id="usernameInput" name="username" />
