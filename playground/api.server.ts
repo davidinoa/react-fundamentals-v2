@@ -1,6 +1,6 @@
 import { respondWithDataTable } from '#shared/api-utils'
 
-export async function loader({ request }: { request: Request }) {
-	const data = new URL(request.url).searchParams
+export async function action({ request }: { request: Request }) {
+	const data = await request.formData()
 	return respondWithDataTable(data)
 }
