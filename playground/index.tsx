@@ -1,35 +1,12 @@
 import { createRoot } from 'react-dom/client'
 
-export function Box({
-	style = {},
-	className = '',
-	size,
-	...otherProps
-}: React.ComponentProps<'div'> & { size?: 'small' | 'medium' | 'large' }) {
-	const sizeClassName = size ? `box--${size}` : ''
-	return (
-		<div
-			className={['box', sizeClassName, className].filter(Boolean).join(' ')}
-			style={{ fontStyle: 'italic', ...style }}
-			{...otherProps}
-		/>
-	)
-}
-
 function App() {
 	return (
-		<div>
-			<Box size="small" style={{ backgroundColor: 'lightblue' }}>
-				small lightblue box
-			</Box>
-			<Box size="medium" style={{ backgroundColor: 'pink' }}>
-				medium pink box
-			</Box>
-			<Box size="large" style={{ backgroundColor: 'orange' }}>
-				large orange box
-			</Box>
-			<Box>sizeless colorless box</Box>
-		</div>
+		<form>
+			<label htmlFor="username">Username</label>
+			<input id="username" name="username" />
+			<button type="submit">Submit</button>
+		</form>
 	)
 }
 
