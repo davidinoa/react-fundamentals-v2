@@ -1,10 +1,9 @@
 import { createRoot } from 'react-dom/client'
 
 function App() {
-	const logFormData = (formData: FormData) => {
+	function logFormData(formData: FormData) {
 		console.log(Object.fromEntries(formData))
 	}
-
 	return (
 		<form action={logFormData}>
 			<div>
@@ -26,6 +25,12 @@ function App() {
 			<div>
 				<label htmlFor="colorInput">Favorite Color:</label>
 				<input id="colorInput" name="color" type="color" />
+			</div>
+			<div>
+				<label htmlFor="waiverSignedInput">
+					<input id="waiverSignedInput" name="waiverSigned" type="checkbox" />
+					Waiver Signed
+				</label>
 			</div>
 			<div>
 				<label htmlFor="startDateInput">Start Date:</label>
