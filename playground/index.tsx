@@ -6,6 +6,7 @@ function App() {
 	}
 	return (
 		<form action={logFormData}>
+			<input type="hidden" name="orgId" value="123" />
 			<div>
 				<label htmlFor="accountTypeSelection">Account Type:</label>
 				<select id="accountTypeSelection" name="accountType">
@@ -36,9 +37,8 @@ function App() {
 				<label htmlFor="colorInput">Favorite Color:</label>
 				<input id="colorInput" name="color" type="color" />
 			</div>
-
 			<fieldset>
-				<legend>Visibility</legend>
+				<legend>Visibility:</legend>
 				<label>
 					<input name="visibility" type="radio" value="public" />
 					Public
