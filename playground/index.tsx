@@ -9,7 +9,11 @@ function App() {
 			<input type="hidden" name="orgId" value="123" />
 			<div>
 				<label htmlFor="accountTypeSelection">Account Type:</label>
-				<select id="accountTypeSelection" name="accountType">
+				<select
+					id="accountTypeSelection"
+					name="accountType"
+					defaultValue="student"
+				>
 					<option value="">--Please select an option--</option>
 					<option value="admin">Admin</option>
 					<option value="teacher">Teacher</option>
@@ -27,7 +31,14 @@ function App() {
 			</div>
 			<div>
 				<label htmlFor="ageInput">Age:</label>
-				<input id="ageInput" name="age" type="number" min="0" max="200" />
+				<input
+					id="ageInput"
+					name="age"
+					type="number"
+					min="0"
+					max="200"
+					defaultValue="18"
+				/>
 			</div>
 			<div>
 				<label htmlFor="photoInput">Photo:</label>
@@ -35,12 +46,17 @@ function App() {
 			</div>
 			<div>
 				<label htmlFor="colorInput">Favorite Color:</label>
-				<input id="colorInput" name="color" type="color" />
+				<input
+					id="colorInput"
+					name="color"
+					type="color"
+					defaultValue="#002E5D"
+				/>
 			</div>
 			<fieldset>
 				<legend>Visibility:</legend>
 				<label>
-					<input name="visibility" type="radio" value="public" />
+					<input name="visibility" type="radio" value="public" defaultChecked />
 					Public
 				</label>
 				<label>
@@ -50,13 +66,18 @@ function App() {
 			</fieldset>
 			<div>
 				<label>
-					<input name="waiver" type="checkbox" />
+					<input name="waiver" type="checkbox" defaultChecked />
 					Waiver Signed
 				</label>
 			</div>
 			<div>
 				<label htmlFor="startDateInput">Start Date:</label>
-				<input id="startDateInput" name="startDate" type="date" />
+				<input
+					id="startDateInput"
+					name="startDate"
+					type="date"
+					defaultValue={new Date().toISOString().split('T')[0]}
+				/>
 			</div>
 			<button type="submit">Submit</button>
 		</form>
