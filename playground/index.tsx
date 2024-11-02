@@ -1,18 +1,27 @@
 import { createRoot } from 'react-dom/client'
-import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
+import {
+	ErrorBoundary,
+	type FallbackProps,
+	useErrorBoundary,
+} from 'react-error-boundary'
 
 function OnboardingForm() {
+	const { showBoundary } = useErrorBoundary()
 	return (
 		<form
 			action="api/onboarding"
 			method="POST"
 			encType="multipart/form-data"
 			onSubmit={event => {
-				event.preventDefault()
-				const formData = new FormData(event.currentTarget)
-				console.log(Object.fromEntries(formData))
-				const accountType = formData.get('accountType') as string
-				console.log(accountType.toUpperCase())
+				try {
+					event.preventDefault()
+					const formData = new FormData(event.currentTarget)
+					console.log(Object.fromEntries(formData))
+					const accountType = formData.get('accounType') as string
+					console.log(accountType.toUpperCase())
+				} catch (error) {
+					showBoundary(error)
+				}
 			}}
 		>
 			<input type="hidden" name="orgId" value="123" />
@@ -85,9 +94,7 @@ function OnboardingForm() {
 					id="startDateInput"
 					name="startDate"
 					type="date"
-					// 💰 you can comment this out to avoid the runtime error
-					defaultValue={new Date('today').toISOString().slice(0, 10)}
-					// defaultValue={new Date().toISOString().slice(0, 10)}
+					defaultValue={new Date().toISOString().slice(0, 10)}
 				/>
 			</div>
 			<button type="submit">Submit</button>
@@ -97,9 +104,9 @@ function OnboardingForm() {
 
 function ErrorFallback({ error }: FallbackProps) {
 	return (
-		<div>
-			<h1>Something went wrong</h1>
-			<pre style={{ color: 'red' }}>{error.message}</pre>
+		<div role="alert">
+			There was an error:{' '}
+			<pre style={{ color: 'red', whiteSpace: 'normal' }}>{error.message}</pre>
 		</div>
 	)
 }
