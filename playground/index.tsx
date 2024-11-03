@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client'
 import {
 	ErrorBoundary,
-	type FallbackProps,
 	useErrorBoundary,
+	type FallbackProps,
 } from 'react-error-boundary'
 
 function OnboardingForm() {
@@ -19,7 +19,7 @@ function OnboardingForm() {
 					console.log(Object.fromEntries(formData))
 					const accountType = formData.get('accounType') as string
 					console.log(accountType.toUpperCase())
-				} catch (error) {
+				} catch (error: unknown) {
 					showBoundary(error)
 				}
 			}}
@@ -102,11 +102,12 @@ function OnboardingForm() {
 	)
 }
 
-function ErrorFallback({ error }: FallbackProps) {
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 	return (
 		<div role="alert">
 			There was an error:{' '}
 			<pre style={{ color: 'red', whiteSpace: 'normal' }}>{error.message}</pre>
+			<button onClick={resetErrorBoundary}>Try again</button>
 		</div>
 	)
 }
